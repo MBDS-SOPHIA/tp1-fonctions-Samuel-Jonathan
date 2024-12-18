@@ -1,55 +1,64 @@
-fun afficherNombresPairsOuImpairs(x: Int, pair: Boolean = true) {
-    var compteur = 0
-    var nombre = if (pair) 0 else 1
-    while (compteur < x) {
-        println(nombre)
-        nombre += 2
-        compteur++
+fun afficherNombresPairsOuImpairs(x: Int, pair: Boolean) {
+    var count = 0
+    var number = if (pair) 0 else 1
+    while (count < x) {
+        println(number)
+        number += 2
+        count++
     }
 }
 
-println("Nombres pairs :")
-afficherNombresPairsOuImpairs(5, pair = true)
+println("Les 5 premiers nombres pairs :")
+afficherNombresPairsOuImpairs(5, true)
+
+println("\nLes 5 premiers nombres impairs :")
+afficherNombresPairsOuImpairs(5, false)
 
 fun afficherFibonacci(x: Int) {
     var a = 0
     var b = 1
     for (i in 1..x) {
         println(a)
-        val suivant = a + b
+        val next = a + b
         a = b
-        b = suivant
+        b = next
     }
 }
-println("\nSuite de Fibonacci :")
-afficherFibonacci(7)
 
-fun factoriel(x: Int = 10): Long {
-    return if (x == 0) 1 else x * factoriel(x - 1)
+println("\nLes 10 premiers nombres de la suite de Fibonacci :")
+afficherFibonacci(10)
+
+fun calculerFactoriel(x: Int = 10): Long {
+    var factoriel: Long = 1
+    for (i in 1..x) {
+        factoriel *= i
+    }
+    return factoriel
 }
 
-println("\nFactoriel de 5 :")
-println(factoriel(5))
+println("\nLe factoriel de 5 :")
+println(calculerFactoriel(5))
 
 fun afficherNombresPremiers(x: Int) {
-    var nombre = 2
-    var compteur = 0
-    while (compteur < x) {
-        if (estPremier(nombre)) {
-            println(nombre)
-            compteur++
+    var count = 0
+    var number = 2
+    while (count < x) {
+        if (estPremier(number)) {
+            println(number)
+            count++
         }
-        nombre++
+        number++
     }
 }
 
-fun estPremier(nombre: Int): Boolean {
-    if (nombre < 2) return false
-    for (i in 2..Math.sqrt(nombre.toDouble()).toInt()) {
-        if (nombre % i == 0) return false
+fun estPremier(n: Int): Boolean {
+    if (n < 2) return false
+    for (i in 2..Math.sqrt(n.toDouble()).toInt()) {
+        if (n % i == 0) return false
     }
     return true
 }
-println("\nNombres premiers :")
+
+println("\nLes 5 premiers nombres premiers :")
 afficherNombresPremiers(5)
 
